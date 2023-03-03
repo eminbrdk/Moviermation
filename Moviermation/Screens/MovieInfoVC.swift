@@ -62,17 +62,17 @@ class MovieInfoVC: UIViewController {
         }
     }
     
-// MARK: - If data is not optional, add and set to the view
+// MARK: - If data is not nil, add and set to the view
     
     func getAndSetOverview() {
-        if let overview = movieInfo.overview, overview != "" {
-            OptionalViews.append(overView)
-            overView.text = overview
-            
-            NSLayoutConstraint.activate([
-                overView.heightAnchor.constraint(equalToConstant: 90)
-            ])
-        }
+        guard let overview = movieInfo.overview, overview != "" else { return }
+        
+        OptionalViews.append(overView)
+        overView.text = overview
+        
+        NSLayoutConstraint.activate([
+            overView.heightAnchor.constraint(equalToConstant: 90)
+        ])
     }
     
     func getAndSetGenres() {
@@ -114,36 +114,36 @@ class MovieInfoVC: UIViewController {
     }
     
     func getAndSetVote() {
-        if let vote = movieInfo.vote_average, vote != 0.0 {
-            voteView = TitleAndLabelRowView(title: "Vote", text: String(vote))
-            OptionalViews.append(voteView)
-            
-            NSLayoutConstraint.activate([
-                voteView.heightAnchor.constraint(equalToConstant: 40)
-            ])
-        }
+        guard let vote = movieInfo.vote_average, vote != 0.0 else { return }
+        
+        voteView = TitleAndLabelRowView(title: "Vote", text: String(format: "%.1f", vote))
+        OptionalViews.append(voteView)
+        
+        NSLayoutConstraint.activate([
+            voteView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     func getAndSetBudget() {
-        if let budget = movieInfo.budget, budget != 0 {
-            budgetView = TitleAndLabelRowView(title: "Budget", text: String(budget).addPointsToNumber())
-            OptionalViews.append(budgetView)
-            
-            NSLayoutConstraint.activate([
-                budgetView.heightAnchor.constraint(equalToConstant: 40)
-            ])
-        }
+        guard let budget = movieInfo.budget, budget != 0 else { return }
+        
+        budgetView = TitleAndLabelRowView(title: "Budget", text: String(budget).addPointsToNumber())
+        OptionalViews.append(budgetView)
+        
+        NSLayoutConstraint.activate([
+            budgetView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     func getAndSetRevenue() {
-        if let revenue = movieInfo.revenue, revenue != 0 {
-            revenueView = TitleAndLabelRowView(title: "Revenue", text: String(revenue).addPointsToNumber())
-            OptionalViews.append(revenueView)
-            
-            NSLayoutConstraint.activate([
-                revenueView.heightAnchor.constraint(equalToConstant: 40)
-            ])
-        }
+        guard let revenue = movieInfo.revenue, revenue != 0 else { return }
+        
+        revenueView = TitleAndLabelRowView(title: "Revenue", text: String(revenue).addPointsToNumber())
+        OptionalViews.append(revenueView)
+        
+        NSLayoutConstraint.activate([
+            revenueView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
 // MARK: - Configure View
@@ -194,15 +194,13 @@ class MovieInfoVC: UIViewController {
                 OptionalViews[viewNumber].trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
             ])
             
-            if viewNumber == 0 {
-                NSLayoutConstraint.activate([
-                    OptionalViews[viewNumber].topAnchor.constraint(equalTo: poster.bottomAnchor, constant: 15)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    OptionalViews[viewNumber].topAnchor.constraint(equalTo: OptionalViews[viewNumber - 1].bottomAnchor, constant: 15)
-                ])
-            }
+            viewNumber == 0 ?
+            NSLayoutConstraint.activate([
+                OptionalViews[viewNumber].topAnchor.constraint(equalTo: poster.bottomAnchor, constant: 15)
+            ]) :
+            NSLayoutConstraint.activate([
+                OptionalViews[viewNumber].topAnchor.constraint(equalTo: OptionalViews[viewNumber - 1].bottomAnchor, constant: 15)
+            ])
         }
     }
 }

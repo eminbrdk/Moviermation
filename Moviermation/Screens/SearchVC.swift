@@ -53,18 +53,18 @@ class SearchVC: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            iconImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
+            iconImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             iconImage.heightAnchor.constraint(equalToConstant: 200),
             iconImage.widthAnchor.constraint(equalTo: iconImage.heightAnchor),
             
-            movieTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 70),
+            movieTextField.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 50),
             movieTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            errorLabel.topAnchor.constraint(equalTo: movieTextField.bottomAnchor, constant: 20),
-            errorLabel.heightAnchor.constraint(equalToConstant: 40),
+            errorLabel.topAnchor.constraint(equalTo: movieTextField.bottomAnchor, constant: 6),
+            errorLabel.heightAnchor.constraint(equalToConstant: 30),
             
-            searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
+            searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
