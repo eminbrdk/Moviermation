@@ -1,8 +1,13 @@
 # Moviermation
-Firstly, you can search movie and if there is error in searching, you can see what is wrong in app. After the successful searchin you can see related movies
+Firstly, you can search movie and if there is error in searching, you can see what is wrong in app.
+After the successful searching you can see related movies. If there is no poster url for this movie, I added app Icon as placeholder poster.
+Finally, you choose one of the movies and get information about movies. If there is no info about genre or some information like genre, this info view is not gonna show up.
+
+# What I Use
+<p>API, Collection View, protocol-delegate ...</p>
+No third libaries
 
 # ScreenShots
-
 <img src="https://user-images.githubusercontent.com/109954489/223089174-ab52c69b-6afd-4bf2-a307-4f40d4a2c0f4.png" width="292" height="633" /><img src="https://user-images.githubusercontent.com/109954489/223089199-de393f5e-b3e1-4410-bf7d-ba6cf2f3c77c.png" width="292" height="633" /><img src="https://user-images.githubusercontent.com/109954489/223089238-d688fb01-4dd7-4e04-95e2-815093d58306.png" width="292" height="633" />
 
 
